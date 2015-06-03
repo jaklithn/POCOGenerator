@@ -30,8 +30,6 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-			this.lblConnectionString = new System.Windows.Forms.Label();
-			this.txtConnectionString = new System.Windows.Forms.TextBox();
 			this.txtSqlView = new System.Windows.Forms.TextBox();
 			this.btnGenerateProc = new System.Windows.Forms.Button();
 			this.tabResult = new System.Windows.Forms.TabControl();
@@ -41,36 +39,20 @@
 			this.btnGenerateTable = new System.Windows.Forms.Button();
 			this.btnGenerateView = new System.Windows.Forms.Button();
 			this.cboTableName = new System.Windows.Forms.ComboBox();
-			this.btnParseTables = new System.Windows.Forms.Button();
+			this.cboConnection = new System.Windows.Forms.ComboBox();
+			this.connectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.lblConnection = new System.Windows.Forms.Label();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.btnEdit = new System.Windows.Forms.Button();
+			this.btnRemove = new System.Windows.Forms.Button();
 			this.sqlColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.resultItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.label1 = new System.Windows.Forms.Label();
 			this.tabResult.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.resultItemBindingSource)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// lblConnectionString
-			// 
-			this.lblConnectionString.AutoSize = true;
-			this.lblConnectionString.Location = new System.Drawing.Point(14, 9);
-			this.lblConnectionString.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.lblConnectionString.Name = "lblConnectionString";
-			this.lblConnectionString.Size = new System.Drawing.Size(91, 13);
-			this.lblConnectionString.TabIndex = 5;
-			this.lblConnectionString.Text = "Connection String";
-			// 
-			// txtConnectionString
-			// 
-			this.txtConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtConnectionString.Font = new System.Drawing.Font("Courier New", 9.75F);
-			this.txtConnectionString.ForeColor = System.Drawing.Color.Navy;
-			this.txtConnectionString.Location = new System.Drawing.Point(12, 27);
-			this.txtConnectionString.Margin = new System.Windows.Forms.Padding(2);
-			this.txtConnectionString.Multiline = true;
-			this.txtConnectionString.Name = "txtConnectionString";
-			this.txtConnectionString.Size = new System.Drawing.Size(1248, 52);
-			this.txtConnectionString.TabIndex = 6;
 			// 
 			// txtSqlView
 			// 
@@ -78,20 +60,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtSqlView.Font = new System.Drawing.Font("Courier New", 9.75F);
 			this.txtSqlView.ForeColor = System.Drawing.Color.Navy;
-			this.txtSqlView.Location = new System.Drawing.Point(17, 117);
+			this.txtSqlView.Location = new System.Drawing.Point(19, 47);
 			this.txtSqlView.Margin = new System.Windows.Forms.Padding(2);
 			this.txtSqlView.Multiline = true;
 			this.txtSqlView.Name = "txtSqlView";
-			this.txtSqlView.Size = new System.Drawing.Size(1092, 24);
+			this.txtSqlView.Size = new System.Drawing.Size(975, 24);
 			this.txtSqlView.TabIndex = 18;
 			// 
 			// btnGenerateProc
 			// 
 			this.btnGenerateProc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnGenerateProc.Location = new System.Drawing.Point(1113, 145);
+			this.btnGenerateProc.Location = new System.Drawing.Point(1007, 81);
 			this.btnGenerateProc.Margin = new System.Windows.Forms.Padding(2);
 			this.btnGenerateProc.Name = "btnGenerateProc";
-			this.btnGenerateProc.Size = new System.Drawing.Size(147, 24);
+			this.btnGenerateProc.Size = new System.Drawing.Size(188, 24);
 			this.btnGenerateProc.TabIndex = 23;
 			this.btnGenerateProc.Text = "Generate from Procedure";
 			this.btnGenerateProc.UseVisualStyleBackColor = true;
@@ -104,11 +86,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabResult.Controls.Add(this.tabPage1);
 			this.tabResult.Controls.Add(this.tabPage2);
-			this.tabResult.Location = new System.Drawing.Point(11, 174);
+			this.tabResult.Location = new System.Drawing.Point(11, 128);
 			this.tabResult.Name = "tabResult";
 			this.tabResult.Padding = new System.Drawing.Point(20, 4);
 			this.tabResult.SelectedIndex = 0;
-			this.tabResult.Size = new System.Drawing.Size(1249, 595);
+			this.tabResult.Size = new System.Drawing.Size(1184, 641);
 			this.tabResult.TabIndex = 28;
 			// 
 			// tabPage1
@@ -116,7 +98,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 24);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(1241, 567);
+			this.tabPage1.Size = new System.Drawing.Size(1176, 613);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -126,7 +108,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 24);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(1241, 567);
+			this.tabPage2.Size = new System.Drawing.Size(1176, 427);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -137,20 +119,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtSqlProcedure.Font = new System.Drawing.Font("Courier New", 9.75F);
 			this.txtSqlProcedure.ForeColor = System.Drawing.Color.Navy;
-			this.txtSqlProcedure.Location = new System.Drawing.Point(17, 145);
+			this.txtSqlProcedure.Location = new System.Drawing.Point(19, 81);
 			this.txtSqlProcedure.Margin = new System.Windows.Forms.Padding(2);
 			this.txtSqlProcedure.Multiline = true;
 			this.txtSqlProcedure.Name = "txtSqlProcedure";
-			this.txtSqlProcedure.Size = new System.Drawing.Size(1092, 24);
+			this.txtSqlProcedure.Size = new System.Drawing.Size(975, 24);
 			this.txtSqlProcedure.TabIndex = 31;
 			// 
 			// btnGenerateTable
 			// 
 			this.btnGenerateTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnGenerateTable.Location = new System.Drawing.Point(1113, 88);
+			this.btnGenerateTable.Location = new System.Drawing.Point(1007, 14);
 			this.btnGenerateTable.Margin = new System.Windows.Forms.Padding(2);
 			this.btnGenerateTable.Name = "btnGenerateTable";
-			this.btnGenerateTable.Size = new System.Drawing.Size(147, 24);
+			this.btnGenerateTable.Size = new System.Drawing.Size(188, 24);
 			this.btnGenerateTable.TabIndex = 32;
 			this.btnGenerateTable.Text = "Generate from Table";
 			this.btnGenerateTable.UseVisualStyleBackColor = true;
@@ -159,10 +141,10 @@
 			// btnGenerateView
 			// 
 			this.btnGenerateView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnGenerateView.Location = new System.Drawing.Point(1113, 117);
+			this.btnGenerateView.Location = new System.Drawing.Point(1007, 47);
 			this.btnGenerateView.Margin = new System.Windows.Forms.Padding(2);
 			this.btnGenerateView.Name = "btnGenerateView";
-			this.btnGenerateView.Size = new System.Drawing.Size(147, 24);
+			this.btnGenerateView.Size = new System.Drawing.Size(188, 24);
 			this.btnGenerateView.TabIndex = 33;
 			this.btnGenerateView.Text = "Generate from View";
 			this.btnGenerateView.UseVisualStyleBackColor = true;
@@ -173,23 +155,75 @@
 			this.cboTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cboTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboTableName.FormattingEnabled = true;
-			this.cboTableName.Location = new System.Drawing.Point(871, 90);
+			this.cboTableName.Location = new System.Drawing.Point(766, 15);
 			this.cboTableName.MaxDropDownItems = 50;
 			this.cboTableName.Name = "cboTableName";
-			this.cboTableName.Size = new System.Drawing.Size(238, 21);
+			this.cboTableName.Size = new System.Drawing.Size(228, 21);
 			this.cboTableName.TabIndex = 34;
 			// 
-			// btnParseTables
+			// cboConnection
 			// 
-			this.btnParseTables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnParseTables.Location = new System.Drawing.Point(746, 89);
-			this.btnParseTables.Margin = new System.Windows.Forms.Padding(2);
-			this.btnParseTables.Name = "btnParseTables";
-			this.btnParseTables.Size = new System.Drawing.Size(108, 23);
-			this.btnParseTables.TabIndex = 35;
-			this.btnParseTables.Text = "Parse Tables";
-			this.btnParseTables.UseVisualStyleBackColor = true;
-			this.btnParseTables.Click += new System.EventHandler(this.btnParseTables_Click);
+			this.cboConnection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.cboConnection.DataSource = this.connectionBindingSource;
+			this.cboConnection.DisplayMember = "DisplayName";
+			this.cboConnection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboConnection.Location = new System.Drawing.Point(114, 14);
+			this.cboConnection.Name = "cboConnection";
+			this.cboConnection.Size = new System.Drawing.Size(350, 21);
+			this.cboConnection.TabIndex = 36;
+			this.cboConnection.ValueMember = "ConnectionString";
+			this.cboConnection.SelectedIndexChanged += new System.EventHandler(this.cboConnection_SelectedIndexChanged);
+			// 
+			// connectionBindingSource
+			// 
+			this.connectionBindingSource.DataSource = typeof(POCOGenerator.Entities.ConnectionItem);
+			// 
+			// lblConnection
+			// 
+			this.lblConnection.AutoSize = true;
+			this.lblConnection.Location = new System.Drawing.Point(16, 17);
+			this.lblConnection.Name = "lblConnection";
+			this.lblConnection.Size = new System.Drawing.Size(92, 13);
+			this.lblConnection.TabIndex = 37;
+			this.lblConnection.Text = "Connection string:";
+			this.lblConnection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// btnAdd
+			// 
+			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAdd.Location = new System.Drawing.Point(478, 13);
+			this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+			this.btnAdd.Name = "btnAdd";
+			this.btnAdd.Size = new System.Drawing.Size(60, 23);
+			this.btnAdd.TabIndex = 38;
+			this.btnAdd.Text = "Add";
+			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+			// 
+			// btnEdit
+			// 
+			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnEdit.Location = new System.Drawing.Point(542, 13);
+			this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+			this.btnEdit.Name = "btnEdit";
+			this.btnEdit.Size = new System.Drawing.Size(60, 23);
+			this.btnEdit.TabIndex = 39;
+			this.btnEdit.Text = "Edit";
+			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+			// 
+			// btnRemove
+			// 
+			this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRemove.Location = new System.Drawing.Point(606, 13);
+			this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
+			this.btnRemove.Name = "btnRemove";
+			this.btnRemove.Size = new System.Drawing.Size(60, 23);
+			this.btnRemove.TabIndex = 40;
+			this.btnRemove.Text = "Remove";
+			this.btnRemove.UseVisualStyleBackColor = true;
+			this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
 			// sqlColumnBindingSource
 			// 
@@ -199,12 +233,29 @@
 			// 
 			this.resultItemBindingSource.DataSource = typeof(POCOGenerator.Entities.ResultItem);
 			// 
+			// label1
+			// 
+			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(685, 18);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(66, 13);
+			this.label1.TabIndex = 41;
+			this.label1.Text = "Table name:";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1271, 780);
-			this.Controls.Add(this.btnParseTables);
+			this.BackColor = System.Drawing.Color.Honeydew;
+			this.ClientSize = new System.Drawing.Size(1206, 780);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.btnRemove);
+			this.Controls.Add(this.btnEdit);
+			this.Controls.Add(this.btnAdd);
+			this.Controls.Add(this.cboConnection);
+			this.Controls.Add(this.lblConnection);
 			this.Controls.Add(this.cboTableName);
 			this.Controls.Add(this.btnGenerateView);
 			this.Controls.Add(this.btnGenerateTable);
@@ -212,13 +263,12 @@
 			this.Controls.Add(this.btnGenerateProc);
 			this.Controls.Add(this.tabResult);
 			this.Controls.Add(this.txtSqlView);
-			this.Controls.Add(this.lblConnectionString);
-			this.Controls.Add(this.txtConnectionString);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Main";
 			this.Text = "Generate POCO class from SQL Server";
 			this.Load += new System.EventHandler(this.Main_Load);
 			this.tabResult.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.resultItemBindingSource)).EndInit();
 			this.ResumeLayout(false);
@@ -228,8 +278,6 @@
 
 		#endregion
 
-		internal System.Windows.Forms.Label lblConnectionString;
-		internal System.Windows.Forms.TextBox txtConnectionString;
 		internal System.Windows.Forms.TextBox txtSqlView;
 		internal System.Windows.Forms.Button btnGenerateProc;
 		private System.Windows.Forms.BindingSource sqlColumnBindingSource;
@@ -241,7 +289,13 @@
 		internal System.Windows.Forms.Button btnGenerateTable;
 		internal System.Windows.Forms.Button btnGenerateView;
 		private System.Windows.Forms.ComboBox cboTableName;
-		internal System.Windows.Forms.Button btnParseTables;
+		private System.Windows.Forms.ComboBox cboConnection;
+		private System.Windows.Forms.Label lblConnection;
+		internal System.Windows.Forms.Button btnAdd;
+		internal System.Windows.Forms.Button btnEdit;
+		internal System.Windows.Forms.Button btnRemove;
+		private System.Windows.Forms.BindingSource connectionBindingSource;
+		private System.Windows.Forms.Label label1;
 	}
 }
 

@@ -36,6 +36,9 @@
     <ApplicationIcon>Resources\code.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.7.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,11 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\zzz_ResultContent.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Connection.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\zzz_ResultContent.Designer.cs">
-      <DependentUpon>zzz_ResultContent.cs</DependentUpon>
+    <Compile Include="Connection.Designer.cs">
+      <DependentUpon>Connection.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ResultContent.cs">
       <SubType>UserControl</SubType>
@@ -61,8 +64,10 @@
       <DependentUpon>ResultContent.cs</DependentUpon>
     </Compile>
     <Compile Include="DomainServices\SqlParser.cs" />
+    <Compile Include="Entities\ConnectionItem.cs" />
     <Compile Include="Entities\ResultItem.cs" />
     <Compile Include="Entities\SqlColumn.cs" />
+    <Compile Include="Extenders\StringExtender.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,8 +76,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\zzz_ResultContent.resx">
-      <DependentUpon>zzz_ResultContent.cs</DependentUpon>
+    <EmbeddedResource Include="Connection.resx">
+      <DependentUpon>Connection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ResultContent.resx">
       <DependentUpon>ResultContent.cs</DependentUpon>
@@ -89,6 +94,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\POCOGenerator.Entities.ConnectionItem.datasource" />
     <None Include="Properties\DataSources\POCOGenerator.Entities.ResultItem.datasource" />
     <None Include="Properties\DataSources\POCOGenerator.Entities.SqlColumn.datasource" />
     <None Include="Properties\Settings.settings">
@@ -109,6 +116,7 @@
   <ItemGroup>
     <Content Include="Resources\code.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using POCOGenerator.Controls;
 using POCOGenerator.DomainServices;
+using POCOGenerator.Entities;
+using POCOGenerator.Extenders;
 using POCOGenerator.Properties;
 
 
@@ -15,10 +21,91 @@ namespace POCOGenerator
 			tabResult.TabPages.Clear();
 		}
 
+		private BindingList<ConnectionItem> ConnectionItems
+		{
+			get { return (BindingList<ConnectionItem>)connectionBindingSource.DataSource; }
+			set { connectionBindingSource.DataSource = value; }
+		}
+
+		private string SelectedConnectionString
+		{
+			get
+			{
+				var connectionItem = (ConnectionItem)connectionBindingSource.Current;
+				return connectionItem != null ? connectionItem.ConnectionString : null;
+			}
+			set
+			{
+				var connectionItem = connectionBindingSource.List.OfType<ConnectionItem>().FirstOrDefault(c => c.ConnectionString == value);
+				var i = connectionBindingSource.IndexOf(connectionItem);
+				if (i >= 0)
+				{
+					connectionBindingSource.Position = i;
+				}
+				else if (connectionBindingSource.Count > 0)
+				{
+					cboConnection.SelectedIndex = 0;
+				}
+			}
+		}
+
+		private void AddConnection()
+		{
+			var f = new Connection();
+			var dialogResult = f.ShowDialog();
+			if (dialogResult == DialogResult.OK)
+			{
+				var connection = new ConnectionItem { ConnectionString = f.ConnectionString };
+				ConnectionItems.Add(connection);
+				SelectedConnectionString = f.ConnectionString;
+				SaveSettings();
+				LoadTables();
+			}
+		}
+
+		private void EditConnection()
+		{
+			var connection = ConnectionItems.FirstOrDefault(c => c.ConnectionString == cboConnection.SelectedValue.ToString());
+			if (connection == null)
+			{
+				MessageBox.Show("There is no connection to edit", "Edit", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+
+			var f = new Connection { ConnectionString = connection.ConnectionString };
+			var dialogResult = f.ShowDialog();
+			if (dialogResult == DialogResult.OK)
+			{
+				connection.ConnectionString = f.ConnectionString;
+				// How to refresh displayed data???
+				SaveSettings();
+				LoadTables();
+			}
+		}
+
+		private void RemoveConnection()
+		{
+			var connection = ConnectionItems.FirstOrDefault(c => c.ConnectionString == cboConnection.SelectedValue.ToString());
+			if (connection == null)
+			{
+				MessageBox.Show("There is no connection to remove", "Remove", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				return;
+			}
+			ConnectionItems.Remove(connection);
+			SaveSettings();
+			LoadTables();
+		}
 
 		private void LoadTables()
 		{
-			cboTableName.DataSource = SqlParser.GetTableNames(txtConnectionString.Text);
+			if (SelectedConnectionString.IsSpecified())
+			{
+				cboTableName.DataSource = SqlParser.GetTableNames(SelectedConnectionString);
+			}
+			else
+			{
+				cboTableName.DataSource = null;
+			}
 		}
 
 		private void Generate(string sql)
@@ -27,7 +114,7 @@ namespace POCOGenerator
 			{
 				Cursor = Cursors.WaitCursor;
 
-				var adoHandler = new SqlParser(txtConnectionString.Text, sql);
+				var adoHandler = new SqlParser(SelectedConnectionString, sql);
 				resultItemBindingSource.DataSource = adoHandler.ResultItems;
 
 				tabResult.TabPages.Clear();
@@ -40,7 +127,6 @@ namespace POCOGenerator
 					content.Initiate(resultItem);
 					tabPage.Controls.Add(content);
 				}
-
 			}
 			catch (Exception ex)
 			{
@@ -51,7 +137,7 @@ namespace POCOGenerator
 				Cursor = Cursors.Default;
 			}
 		}
-		
+
 		private void AdjustSql()
 		{
 			var sql = txtSqlView.Text.Trim();
@@ -60,7 +146,13 @@ namespace POCOGenerator
 
 		private void GetSettings()
 		{
-			txtConnectionString.Text = Settings.Default.ConnectionString;
+			ConnectionItems = JsonConvert.DeserializeObject<BindingList<ConnectionItem>>(Settings.Default.ConnectionStrings) ?? new BindingList<ConnectionItem>();
+			if (ConnectionItems.Any(c => c.ConnectionString == Settings.Default.SelectedConnection))
+			{
+				SelectedConnectionString = Settings.Default.SelectedConnection;
+				LoadTables();
+			}
+
 			txtSqlView.Text = Settings.Default.SQLView;
 			txtSqlProcedure.Text = Settings.Default.SQLProcedure;
 
@@ -72,7 +164,8 @@ namespace POCOGenerator
 
 		private void SaveSettings()
 		{
-			Settings.Default.ConnectionString = txtConnectionString.Text;
+			Settings.Default.ConnectionStrings = JsonConvert.SerializeObject(ConnectionItems);
+			Settings.Default.SelectedConnection = SelectedConnectionString;
 			Settings.Default.SQLView = txtSqlView.Text;
 			Settings.Default.SQLProcedure = txtSqlProcedure.Text;
 			Settings.Default.Save();
@@ -88,6 +181,7 @@ namespace POCOGenerator
 		//	txtEntityNames.Visible = isProcedure;
 		//}
 
+
 		#region Event Handlers
 
 		private void Main_Load(object sender, EventArgs e)
@@ -95,7 +189,22 @@ namespace POCOGenerator
 			GetSettings();
 		}
 
-		private void btnParseTables_Click(object sender, EventArgs e)
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			AddConnection();
+		}
+
+		private void btnEdit_Click(object sender, EventArgs e)
+		{
+			EditConnection();
+		}
+
+		private void btnRemove_Click(object sender, EventArgs e)
+		{
+			RemoveConnection();
+		}
+
+		private void cboConnection_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			LoadTables();
 		}

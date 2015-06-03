@@ -5,14 +5,17 @@
     <Setting Name="ConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">Server=localhost;Database=Northwind;Trusted_Connection=True;User ID=;Password=;</Value>
     </Setting>
-    <Setting Name="EntityNames" Type="System.String" Scope="User">
-      <Value Profile="(Default)">EntityName1, EntityName2, ...</Value>
-    </Setting>
     <Setting Name="SQLText" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SELECT * FROM TableName</Value>
+      <Value Profile="(Default)">SELECT * FROM [TableName]</Value>
+    </Setting>
+    <Setting Name="SQLView" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SELECT * FROM [ViewName]</Value>
     </Setting>
     <Setting Name="SQLProcedure" Type="System.String" Scope="User">
-      <Value Profile="(Default)">EXEC StoredProcedure @parameter1=value1, @parameter2=value2, ...</Value>
+      <Value Profile="(Default)">EXEC StoredProcedure @parameter1=value1, @parameter2=value2, ... [AS Result1, Result2, ...]</Value>
+    </Setting>
+    <Setting Name="ConnectionStrings" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
