@@ -24,9 +24,20 @@ namespace POCOGenerator.DomainServices
 				var posAs = sqlUpper.IndexOf(" AS ");
 				if (posAs > 5)
 				{
-					entityNames = sql.Substring(posAs+4);
+					entityNames = sql.Substring(posAs + 4);
 					sql = sql.Substring(0, posAs);
 				}
+			}
+
+			// Decorate table name with brackets
+			var posFrom = sql.IndexOf(" FROM ");
+			if (posFrom > 0)
+			{
+				var tableName = sql.Substring(posFrom + 6);
+				tableName = tableName.Replace("[", "").Replace("]", "");
+				var sections = tableName.Split(".".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+				var decoratedTable = "[" + string.Join("].[", sections) + "]";
+				sql = sql.Substring(0, posFrom + 6) + decoratedTable;
 			}
 
 			ParseTables(connectionString, sql, entityNames);
@@ -198,6 +209,7 @@ namespace POCOGenerator.DomainServices
 					return "decimal";
 
 				case "time":
+					return "TimeSpan";
 				case "date":
 				case "datetime":
 				case "datetime2":

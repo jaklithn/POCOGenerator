@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using POCOGenerator.Extenders;
 
 
 namespace POCOGenerator
@@ -11,6 +12,9 @@ namespace POCOGenerator
 		{
 			InitializeComponent();
 		}
+
+
+		#region  Properties
 
 		public string ConnectionString
 		{
@@ -25,6 +29,24 @@ namespace POCOGenerator
 				var builder = new SqlConnectionStringBuilder(ConnectionString);
 				return string.Format("{0} - {1}", builder.DataSource, builder.InitialCatalog);
 			}
+		}
+
+		#endregion
+
+
+		#region Event Handlers
+
+		private void Connection_Load(object sender, EventArgs e)
+		{
+			if (txtConnectionString.Text.IsNullOrEmpty())
+			{
+				txtConnectionString.Text = "Server=localhost; Database=; Trusted_Connection=True; User ID=; Password=;";
+			}
+		}
+
+		private void Connection_Activated(object sender, EventArgs e)
+		{
+			btnCancel.Focus();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -42,5 +64,7 @@ namespace POCOGenerator
 				MessageBox.Show("Failed to validate connection string", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+		#endregion
 	}
 }

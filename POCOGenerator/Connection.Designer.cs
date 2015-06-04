@@ -85,6 +85,8 @@
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
 			this.Text = "Connection";
+			this.Activated += new System.EventHandler(this.Connection_Activated);
+			this.Load += new System.EventHandler(this.Connection_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

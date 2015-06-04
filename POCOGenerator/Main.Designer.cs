@@ -64,13 +64,13 @@
 			this.txtSqlView.Margin = new System.Windows.Forms.Padding(2);
 			this.txtSqlView.Multiline = true;
 			this.txtSqlView.Name = "txtSqlView";
-			this.txtSqlView.Size = new System.Drawing.Size(975, 24);
+			this.txtSqlView.Size = new System.Drawing.Size(1175, 24);
 			this.txtSqlView.TabIndex = 18;
 			// 
 			// btnGenerateProc
 			// 
 			this.btnGenerateProc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnGenerateProc.Location = new System.Drawing.Point(1007, 81);
+			this.btnGenerateProc.Location = new System.Drawing.Point(1207, 81);
 			this.btnGenerateProc.Margin = new System.Windows.Forms.Padding(2);
 			this.btnGenerateProc.Name = "btnGenerateProc";
 			this.btnGenerateProc.Size = new System.Drawing.Size(188, 24);
@@ -90,7 +90,7 @@
 			this.tabResult.Name = "tabResult";
 			this.tabResult.Padding = new System.Drawing.Point(20, 4);
 			this.tabResult.SelectedIndex = 0;
-			this.tabResult.Size = new System.Drawing.Size(1184, 641);
+			this.tabResult.Size = new System.Drawing.Size(1384, 641);
 			this.tabResult.TabIndex = 28;
 			// 
 			// tabPage1
@@ -98,7 +98,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 24);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(1176, 613);
+			this.tabPage1.Size = new System.Drawing.Size(1376, 613);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 24);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(1176, 427);
+			this.tabPage2.Size = new System.Drawing.Size(1376, 613);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -123,13 +123,13 @@
 			this.txtSqlProcedure.Margin = new System.Windows.Forms.Padding(2);
 			this.txtSqlProcedure.Multiline = true;
 			this.txtSqlProcedure.Name = "txtSqlProcedure";
-			this.txtSqlProcedure.Size = new System.Drawing.Size(975, 24);
+			this.txtSqlProcedure.Size = new System.Drawing.Size(1175, 24);
 			this.txtSqlProcedure.TabIndex = 31;
 			// 
 			// btnGenerateTable
 			// 
 			this.btnGenerateTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnGenerateTable.Location = new System.Drawing.Point(1007, 14);
+			this.btnGenerateTable.Location = new System.Drawing.Point(1207, 14);
 			this.btnGenerateTable.Margin = new System.Windows.Forms.Padding(2);
 			this.btnGenerateTable.Name = "btnGenerateTable";
 			this.btnGenerateTable.Size = new System.Drawing.Size(188, 24);
@@ -141,7 +141,7 @@
 			// btnGenerateView
 			// 
 			this.btnGenerateView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnGenerateView.Location = new System.Drawing.Point(1007, 47);
+			this.btnGenerateView.Location = new System.Drawing.Point(1207, 47);
 			this.btnGenerateView.Margin = new System.Windows.Forms.Padding(2);
 			this.btnGenerateView.Name = "btnGenerateView";
 			this.btnGenerateView.Size = new System.Drawing.Size(188, 24);
@@ -155,7 +155,7 @@
 			this.cboTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cboTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboTableName.FormattingEnabled = true;
-			this.cboTableName.Location = new System.Drawing.Point(766, 15);
+			this.cboTableName.Location = new System.Drawing.Point(966, 15);
 			this.cboTableName.MaxDropDownItems = 50;
 			this.cboTableName.Name = "cboTableName";
 			this.cboTableName.Size = new System.Drawing.Size(228, 21);
@@ -170,14 +170,14 @@
 			this.cboConnection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboConnection.Location = new System.Drawing.Point(114, 14);
 			this.cboConnection.Name = "cboConnection";
-			this.cboConnection.Size = new System.Drawing.Size(350, 21);
+			this.cboConnection.Size = new System.Drawing.Size(550, 21);
 			this.cboConnection.TabIndex = 36;
 			this.cboConnection.ValueMember = "ConnectionString";
-			this.cboConnection.SelectedIndexChanged += new System.EventHandler(this.cboConnection_SelectedIndexChanged);
 			// 
 			// connectionBindingSource
 			// 
 			this.connectionBindingSource.DataSource = typeof(POCOGenerator.Entities.ConnectionItem);
+			this.connectionBindingSource.CurrentChanged += new System.EventHandler(this.connectionBindingSource_CurrentChanged);
 			// 
 			// lblConnection
 			// 
@@ -192,7 +192,7 @@
 			// btnAdd
 			// 
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAdd.Location = new System.Drawing.Point(478, 13);
+			this.btnAdd.Location = new System.Drawing.Point(678, 13);
 			this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(60, 23);
@@ -204,7 +204,7 @@
 			// btnEdit
 			// 
 			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.Location = new System.Drawing.Point(542, 13);
+			this.btnEdit.Location = new System.Drawing.Point(742, 13);
 			this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(60, 23);
@@ -216,7 +216,7 @@
 			// btnRemove
 			// 
 			this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRemove.Location = new System.Drawing.Point(606, 13);
+			this.btnRemove.Location = new System.Drawing.Point(806, 13);
 			this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
 			this.btnRemove.Name = "btnRemove";
 			this.btnRemove.Size = new System.Drawing.Size(60, 23);
@@ -237,7 +237,7 @@
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(685, 18);
+			this.label1.Location = new System.Drawing.Point(885, 18);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(66, 13);
 			this.label1.TabIndex = 41;
@@ -248,8 +248,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.Honeydew;
-			this.ClientSize = new System.Drawing.Size(1206, 780);
+			this.BackColor = System.Drawing.Color.AliceBlue;
+			this.ClientSize = new System.Drawing.Size(1406, 780);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnRemove);
 			this.Controls.Add(this.btnEdit);
