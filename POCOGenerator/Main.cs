@@ -14,6 +14,8 @@ namespace POCOGenerator
 {
 	public partial class Main : Form
 	{
+		private const int TopCount = 10;
+
 		public Main()
 		{
 			InitializeComponent();
@@ -22,7 +24,7 @@ namespace POCOGenerator
 
 		private BindingList<ConnectionItem> ConnectionItems
 		{
-			get { return (BindingList<ConnectionItem>) connectionBindingSource.DataSource; }
+			get { return (BindingList<ConnectionItem>)connectionBindingSource.DataSource; }
 			set { connectionBindingSource.DataSource = value; }
 		}
 
@@ -30,7 +32,7 @@ namespace POCOGenerator
 		{
 			get
 			{
-				var connectionItem = (ConnectionItem) connectionBindingSource.Current;
+				var connectionItem = (ConnectionItem)connectionBindingSource.Current;
 				return connectionItem != null ? connectionItem.ConnectionString : null;
 			}
 			set
@@ -54,7 +56,7 @@ namespace POCOGenerator
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
-				var connection = new ConnectionItem {ConnectionString = f.ConnectionString};
+				var connection = new ConnectionItem { ConnectionString = f.ConnectionString };
 				ConnectionItems.Add(connection);
 				SelectedConnectionString = f.ConnectionString;
 				SaveSettings();
@@ -71,7 +73,7 @@ namespace POCOGenerator
 				return;
 			}
 
-			var f = new Connection {ConnectionString = connection.ConnectionString};
+			var f = new Connection { ConnectionString = connection.ConnectionString };
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
@@ -119,10 +121,10 @@ namespace POCOGenerator
 				tabResult.TabPages.Clear();
 				foreach (var resultItem in adoHandler.ResultItems)
 				{
-					var tabPage = new TabPage {Text = resultItem.EntityName, Margin = new Padding(0)};
+					var tabPage = new TabPage { Text = resultItem.EntityName, Margin = new Padding(0) };
 					tabResult.TabPages.Add(tabPage);
 
-					var content = new ResultContent {Dock = DockStyle.Fill};
+					var content = new ResultContent { Dock = DockStyle.Fill };
 					content.Initiate(resultItem);
 					tabPage.Controls.Add(content);
 				}
@@ -140,7 +142,7 @@ namespace POCOGenerator
 		private void AdjustSql()
 		{
 			var sql = txtSqlView.Text.Trim();
-			txtSqlView.Text = sql.Replace("SELECT *", "SELECT TOP 10 *");
+			txtSqlView.Text = sql.Replace("SELECT *", string.Format("SELECT TOP {0} *", TopCount));
 		}
 
 		private void GetSettings()
@@ -200,7 +202,7 @@ namespace POCOGenerator
 
 		private void btnGenerateTable_Click(object sender, EventArgs e)
 		{
-			var sql = string.Format("SELECT TOP 10 * FROM {0}", cboTableName.Text);
+			var sql = string.Format("SELECT TOP {0} * FROM {1}", TopCount, cboTableName.Text);
 			SaveSettings();
 			Generate(sql);
 		}

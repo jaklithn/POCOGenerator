@@ -34,17 +34,7 @@
 			this.grdData = new System.Windows.Forms.DataGridView();
 			this.tabSchema = new System.Windows.Forms.TabPage();
 			this.grdSchema = new System.Windows.Forms.DataGridView();
-			this.columnNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataTypeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dataTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.columnSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NumericScale = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.numericPrecisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.allowDBNullDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.isKeyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.isIdentityDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.isAutoIncrementDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-			this.sqlColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tableResult = new System.Windows.Forms.TableLayoutPanel();
 			this.txtCode = new System.Windows.Forms.TextBox();
 			this.baseColumnNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,13 +49,23 @@
 			this.isRowVersionDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.isLongDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.isReadOnlyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.columnNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataTypeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dataTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.columnSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.numericPrecisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.allowDBNullDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.isKeyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.isIdentityDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.isAutoIncrementDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.sqlColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tabTable.SuspendLayout();
 			this.tabData.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
 			this.tabSchema.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.grdSchema)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).BeginInit();
 			this.tableResult.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabTable
@@ -99,6 +99,7 @@
 			this.grdData.AllowUserToAddRows = false;
 			this.grdData.AllowUserToDeleteRows = false;
 			this.grdData.AllowUserToResizeRows = false;
+			this.grdData.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.grdData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.grdData.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.grdData.Location = new System.Drawing.Point(3, 3);
@@ -126,6 +127,7 @@
 			this.grdSchema.AllowUserToDeleteRows = false;
 			this.grdSchema.AllowUserToResizeRows = false;
 			this.grdSchema.AutoGenerateColumns = false;
+			this.grdSchema.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.grdSchema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.grdSchema.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnNameDataGridViewTextBoxColumn,
@@ -150,34 +152,6 @@
 			this.grdSchema.Size = new System.Drawing.Size(1176, 308);
 			this.grdSchema.TabIndex = 26;
 			// 
-			// columnNameDataGridViewTextBoxColumn
-			// 
-			this.columnNameDataGridViewTextBoxColumn.DataPropertyName = "ColumnName";
-			this.columnNameDataGridViewTextBoxColumn.HeaderText = "ColumnName";
-			this.columnNameDataGridViewTextBoxColumn.Name = "columnNameDataGridViewTextBoxColumn";
-			this.columnNameDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// dataTypeNameDataGridViewTextBoxColumn
-			// 
-			this.dataTypeNameDataGridViewTextBoxColumn.DataPropertyName = "DataTypeName";
-			this.dataTypeNameDataGridViewTextBoxColumn.HeaderText = "DataTypeName";
-			this.dataTypeNameDataGridViewTextBoxColumn.Name = "dataTypeNameDataGridViewTextBoxColumn";
-			this.dataTypeNameDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// dataTypeDataGridViewTextBoxColumn
-			// 
-			this.dataTypeDataGridViewTextBoxColumn.DataPropertyName = "DataType";
-			this.dataTypeDataGridViewTextBoxColumn.HeaderText = "DataType";
-			this.dataTypeDataGridViewTextBoxColumn.Name = "dataTypeDataGridViewTextBoxColumn";
-			this.dataTypeDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// columnSizeDataGridViewTextBoxColumn
-			// 
-			this.columnSizeDataGridViewTextBoxColumn.DataPropertyName = "ColumnSize";
-			this.columnSizeDataGridViewTextBoxColumn.HeaderText = "ColumnSize";
-			this.columnSizeDataGridViewTextBoxColumn.Name = "columnSizeDataGridViewTextBoxColumn";
-			this.columnSizeDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
 			// NumericScale
 			// 
 			this.NumericScale.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -186,45 +160,6 @@
 			this.NumericScale.HeaderText = "NumericScale";
 			this.NumericScale.Name = "NumericScale";
 			this.NumericScale.ReadOnly = true;
-			// 
-			// numericPrecisionDataGridViewTextBoxColumn
-			// 
-			this.numericPrecisionDataGridViewTextBoxColumn.DataPropertyName = "NumericPrecision";
-			this.numericPrecisionDataGridViewTextBoxColumn.HeaderText = "NumericPrecision";
-			this.numericPrecisionDataGridViewTextBoxColumn.Name = "numericPrecisionDataGridViewTextBoxColumn";
-			this.numericPrecisionDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// allowDBNullDataGridViewCheckBoxColumn
-			// 
-			this.allowDBNullDataGridViewCheckBoxColumn.DataPropertyName = "AllowDBNull";
-			this.allowDBNullDataGridViewCheckBoxColumn.HeaderText = "AllowDBNull";
-			this.allowDBNullDataGridViewCheckBoxColumn.Name = "allowDBNullDataGridViewCheckBoxColumn";
-			this.allowDBNullDataGridViewCheckBoxColumn.ReadOnly = true;
-			// 
-			// isKeyDataGridViewCheckBoxColumn
-			// 
-			this.isKeyDataGridViewCheckBoxColumn.DataPropertyName = "IsKey";
-			this.isKeyDataGridViewCheckBoxColumn.HeaderText = "IsKey";
-			this.isKeyDataGridViewCheckBoxColumn.Name = "isKeyDataGridViewCheckBoxColumn";
-			this.isKeyDataGridViewCheckBoxColumn.ReadOnly = true;
-			// 
-			// isIdentityDataGridViewCheckBoxColumn
-			// 
-			this.isIdentityDataGridViewCheckBoxColumn.DataPropertyName = "IsIdentity";
-			this.isIdentityDataGridViewCheckBoxColumn.HeaderText = "IsIdentity";
-			this.isIdentityDataGridViewCheckBoxColumn.Name = "isIdentityDataGridViewCheckBoxColumn";
-			this.isIdentityDataGridViewCheckBoxColumn.ReadOnly = true;
-			// 
-			// isAutoIncrementDataGridViewCheckBoxColumn
-			// 
-			this.isAutoIncrementDataGridViewCheckBoxColumn.DataPropertyName = "IsAutoIncrement";
-			this.isAutoIncrementDataGridViewCheckBoxColumn.HeaderText = "IsAutoIncrement";
-			this.isAutoIncrementDataGridViewCheckBoxColumn.Name = "isAutoIncrementDataGridViewCheckBoxColumn";
-			this.isAutoIncrementDataGridViewCheckBoxColumn.ReadOnly = true;
-			// 
-			// sqlColumnBindingSource
-			// 
-			this.sqlColumnBindingSource.DataSource = typeof(POCOGenerator.Entities.SqlColumn);
 			// 
 			// tableResult
 			// 
@@ -340,6 +275,73 @@
 			this.isReadOnlyDataGridViewCheckBoxColumn.Name = "isReadOnlyDataGridViewCheckBoxColumn";
 			this.isReadOnlyDataGridViewCheckBoxColumn.ReadOnly = true;
 			// 
+			// columnNameDataGridViewTextBoxColumn
+			// 
+			this.columnNameDataGridViewTextBoxColumn.DataPropertyName = "ColumnName";
+			this.columnNameDataGridViewTextBoxColumn.HeaderText = "ColumnName";
+			this.columnNameDataGridViewTextBoxColumn.Name = "columnNameDataGridViewTextBoxColumn";
+			this.columnNameDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// dataTypeNameDataGridViewTextBoxColumn
+			// 
+			this.dataTypeNameDataGridViewTextBoxColumn.DataPropertyName = "DataTypeName";
+			this.dataTypeNameDataGridViewTextBoxColumn.HeaderText = "DataTypeName";
+			this.dataTypeNameDataGridViewTextBoxColumn.Name = "dataTypeNameDataGridViewTextBoxColumn";
+			this.dataTypeNameDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// dataTypeDataGridViewTextBoxColumn
+			// 
+			this.dataTypeDataGridViewTextBoxColumn.DataPropertyName = "DataType";
+			this.dataTypeDataGridViewTextBoxColumn.HeaderText = "DataType";
+			this.dataTypeDataGridViewTextBoxColumn.Name = "dataTypeDataGridViewTextBoxColumn";
+			this.dataTypeDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// columnSizeDataGridViewTextBoxColumn
+			// 
+			this.columnSizeDataGridViewTextBoxColumn.DataPropertyName = "ColumnSize";
+			this.columnSizeDataGridViewTextBoxColumn.HeaderText = "ColumnSize";
+			this.columnSizeDataGridViewTextBoxColumn.Name = "columnSizeDataGridViewTextBoxColumn";
+			this.columnSizeDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// numericPrecisionDataGridViewTextBoxColumn
+			// 
+			this.numericPrecisionDataGridViewTextBoxColumn.DataPropertyName = "NumericPrecision";
+			this.numericPrecisionDataGridViewTextBoxColumn.HeaderText = "NumericPrecision";
+			this.numericPrecisionDataGridViewTextBoxColumn.Name = "numericPrecisionDataGridViewTextBoxColumn";
+			this.numericPrecisionDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// allowDBNullDataGridViewCheckBoxColumn
+			// 
+			this.allowDBNullDataGridViewCheckBoxColumn.DataPropertyName = "AllowDBNull";
+			this.allowDBNullDataGridViewCheckBoxColumn.HeaderText = "AllowDBNull";
+			this.allowDBNullDataGridViewCheckBoxColumn.Name = "allowDBNullDataGridViewCheckBoxColumn";
+			this.allowDBNullDataGridViewCheckBoxColumn.ReadOnly = true;
+			// 
+			// isKeyDataGridViewCheckBoxColumn
+			// 
+			this.isKeyDataGridViewCheckBoxColumn.DataPropertyName = "IsKey";
+			this.isKeyDataGridViewCheckBoxColumn.HeaderText = "IsKey";
+			this.isKeyDataGridViewCheckBoxColumn.Name = "isKeyDataGridViewCheckBoxColumn";
+			this.isKeyDataGridViewCheckBoxColumn.ReadOnly = true;
+			// 
+			// isIdentityDataGridViewCheckBoxColumn
+			// 
+			this.isIdentityDataGridViewCheckBoxColumn.DataPropertyName = "IsIdentity";
+			this.isIdentityDataGridViewCheckBoxColumn.HeaderText = "IsIdentity";
+			this.isIdentityDataGridViewCheckBoxColumn.Name = "isIdentityDataGridViewCheckBoxColumn";
+			this.isIdentityDataGridViewCheckBoxColumn.ReadOnly = true;
+			// 
+			// isAutoIncrementDataGridViewCheckBoxColumn
+			// 
+			this.isAutoIncrementDataGridViewCheckBoxColumn.DataPropertyName = "IsAutoIncrement";
+			this.isAutoIncrementDataGridViewCheckBoxColumn.HeaderText = "IsAutoIncrement";
+			this.isAutoIncrementDataGridViewCheckBoxColumn.Name = "isAutoIncrementDataGridViewCheckBoxColumn";
+			this.isAutoIncrementDataGridViewCheckBoxColumn.ReadOnly = true;
+			// 
+			// sqlColumnBindingSource
+			// 
+			this.sqlColumnBindingSource.DataSource = typeof(POCOGenerator.Entities.SqlColumn);
+			// 
 			// ResultContent
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,9 +354,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
 			this.tabSchema.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.grdSchema)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).EndInit();
 			this.tableResult.ResumeLayout(false);
 			this.tableResult.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
