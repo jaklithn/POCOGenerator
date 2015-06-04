@@ -16,15 +16,11 @@ namespace POCOGenerator
 	{
 		private const int TopCount = 10;
 
-		public Main()
-		{
-			InitializeComponent();
-			tabResult.TabPages.Clear();
-		}
+		#region Properties
 
 		private BindingList<ConnectionItem> ConnectionItems
 		{
-			get { return (BindingList<ConnectionItem>)connectionBindingSource.DataSource; }
+			get { return (BindingList<ConnectionItem>) connectionBindingSource.DataSource; }
 			set { connectionBindingSource.DataSource = value; }
 		}
 
@@ -32,7 +28,7 @@ namespace POCOGenerator
 		{
 			get
 			{
-				var connectionItem = (ConnectionItem)connectionBindingSource.Current;
+				var connectionItem = (ConnectionItem) connectionBindingSource.Current;
 				return connectionItem != null ? connectionItem.ConnectionString : null;
 			}
 			set
@@ -49,6 +45,15 @@ namespace POCOGenerator
 				}
 			}
 		}
+
+		#endregion
+
+		public Main()
+		{
+			InitializeComponent();
+			tabResult.TabPages.Clear();
+		}
+		
 
 		private void AddConnection()
 		{
@@ -147,15 +152,16 @@ namespace POCOGenerator
 
 		private void GetSettings()
 		{
-			ConnectionItems = JsonConvert.DeserializeObject<BindingList<ConnectionItem>>(Settings.Default.ConnectionStrings) ?? new BindingList<ConnectionItem>();
-			if (ConnectionItems.Any(c => c.ConnectionString == Settings.Default.SelectedConnection))
+			var settings = SettingsHandler.Get();
+			ConnectionItems = settings.ConnectionStrings;
+			if (ConnectionItems.Any(c => c.ConnectionString == settings.SelectedConnection))
 			{
-				SelectedConnectionString = Settings.Default.SelectedConnection;
+				SelectedConnectionString = settings.SelectedConnection;
 				LoadTables();
 			}
 
-			txtSqlView.Text = Settings.Default.SQLView;
-			txtSqlProcedure.Text = Settings.Default.SQLProcedure;
+			txtSqlView.Text = settings.SqlView;
+			txtSqlProcedure.Text = settings.SqlProcedure;
 
 			if (Environment.UserName == "jal")
 			{
@@ -165,11 +171,14 @@ namespace POCOGenerator
 
 		private void SaveSettings()
 		{
-			Settings.Default.ConnectionStrings = JsonConvert.SerializeObject(ConnectionItems);
-			Settings.Default.SelectedConnection = SelectedConnectionString;
-			Settings.Default.SQLView = txtSqlView.Text;
-			Settings.Default.SQLProcedure = txtSqlProcedure.Text;
-			Settings.Default.Save();
+			var settings = new Settings
+			{
+				ConnectionStrings = ConnectionItems,
+				SelectedConnection = SelectedConnectionString,
+				SqlView = txtSqlView.Text,
+				SqlProcedure = txtSqlProcedure.Text
+			};
+			SettingsHandler.Save(settings);
 		}
 
 

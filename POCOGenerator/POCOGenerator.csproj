@@ -63,9 +63,11 @@
     <Compile Include="Controls\ResultContent.Designer.cs">
       <DependentUpon>ResultContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="DomainServices\SettingsHandler.cs" />
     <Compile Include="DomainServices\SqlParser.cs" />
     <Compile Include="Entities\ConnectionItem.cs" />
     <Compile Include="Entities\ResultItem.cs" />
+    <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\SqlColumn.cs" />
     <Compile Include="Extenders\StringExtender.cs" />
     <Compile Include="Main.cs">
@@ -98,20 +100,6 @@
     <None Include="Properties\DataSources\POCOGenerator.Entities.ConnectionItem.datasource" />
     <None Include="Properties\DataSources\POCOGenerator.Entities.ResultItem.datasource" />
     <None Include="Properties\DataSources\POCOGenerator.Entities.SqlColumn.datasource" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\code.ico" />
