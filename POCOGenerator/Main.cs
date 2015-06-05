@@ -2,12 +2,10 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using POCOGenerator.Controls;
 using POCOGenerator.DomainServices;
 using POCOGenerator.Entities;
 using POCOGenerator.Extenders;
-using POCOGenerator.Properties;
 
 
 namespace POCOGenerator
@@ -15,6 +13,7 @@ namespace POCOGenerator
 	public partial class Main : Form
 	{
 		private const int TopCount = 10;
+
 
 		#region Properties
 
@@ -48,12 +47,13 @@ namespace POCOGenerator
 
 		#endregion
 
+
 		public Main()
 		{
 			InitializeComponent();
 			tabResult.TabPages.Clear();
 		}
-		
+
 
 		private void AddConnection()
 		{
@@ -61,7 +61,7 @@ namespace POCOGenerator
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
-				var connection = new ConnectionItem { ConnectionString = f.ConnectionString };
+				var connection = new ConnectionItem {ConnectionString = f.ConnectionString};
 				ConnectionItems.Add(connection);
 				SelectedConnectionString = f.ConnectionString;
 				SaveSettings();
@@ -78,7 +78,7 @@ namespace POCOGenerator
 				return;
 			}
 
-			var f = new Connection { ConnectionString = connection.ConnectionString };
+			var f = new Connection {ConnectionString = connection.ConnectionString};
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
@@ -126,10 +126,10 @@ namespace POCOGenerator
 				tabResult.TabPages.Clear();
 				foreach (var resultItem in adoHandler.ResultItems)
 				{
-					var tabPage = new TabPage { Text = resultItem.EntityName, Margin = new Padding(0) };
+					var tabPage = new TabPage {Text = resultItem.EntityName, Margin = new Padding(0)};
 					tabResult.TabPages.Add(tabPage);
 
-					var content = new ResultContent { Dock = DockStyle.Fill };
+					var content = new ResultContent {Dock = DockStyle.Fill};
 					content.Initiate(resultItem);
 					tabPage.Controls.Add(content);
 				}
