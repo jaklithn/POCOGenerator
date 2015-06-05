@@ -154,11 +154,13 @@
 			// 
 			this.cboTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cboTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboTableName.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cboTableName.ForeColor = System.Drawing.Color.Navy;
 			this.cboTableName.FormattingEnabled = true;
-			this.cboTableName.Location = new System.Drawing.Point(966, 15);
+			this.cboTableName.Location = new System.Drawing.Point(966, 16);
 			this.cboTableName.MaxDropDownItems = 50;
 			this.cboTableName.Name = "cboTableName";
-			this.cboTableName.Size = new System.Drawing.Size(228, 21);
+			this.cboTableName.Size = new System.Drawing.Size(228, 20);
 			this.cboTableName.TabIndex = 34;
 			// 
 			// cboConnection
@@ -168,9 +170,11 @@
 			this.cboConnection.DataSource = this.connectionBindingSource;
 			this.cboConnection.DisplayMember = "DisplayName";
 			this.cboConnection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboConnection.Location = new System.Drawing.Point(114, 14);
+			this.cboConnection.Font = new System.Drawing.Font("Lucida Console", 9F);
+			this.cboConnection.ForeColor = System.Drawing.Color.Navy;
+			this.cboConnection.Location = new System.Drawing.Point(114, 16);
 			this.cboConnection.Name = "cboConnection";
-			this.cboConnection.Size = new System.Drawing.Size(550, 21);
+			this.cboConnection.Size = new System.Drawing.Size(550, 20);
 			this.cboConnection.TabIndex = 36;
 			this.cboConnection.ValueMember = "ConnectionString";
 			// 
@@ -182,7 +186,7 @@
 			// lblConnection
 			// 
 			this.lblConnection.AutoSize = true;
-			this.lblConnection.Location = new System.Drawing.Point(16, 17);
+			this.lblConnection.Location = new System.Drawing.Point(16, 20);
 			this.lblConnection.Name = "lblConnection";
 			this.lblConnection.Size = new System.Drawing.Size(92, 13);
 			this.lblConnection.TabIndex = 37;
@@ -192,10 +196,10 @@
 			// btnAdd
 			// 
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAdd.Location = new System.Drawing.Point(678, 13);
+			this.btnAdd.Location = new System.Drawing.Point(678, 14);
 			this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
 			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(60, 23);
+			this.btnAdd.Size = new System.Drawing.Size(60, 24);
 			this.btnAdd.TabIndex = 38;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
@@ -204,10 +208,10 @@
 			// btnEdit
 			// 
 			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.Location = new System.Drawing.Point(742, 13);
+			this.btnEdit.Location = new System.Drawing.Point(742, 14);
 			this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
 			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(60, 23);
+			this.btnEdit.Size = new System.Drawing.Size(60, 24);
 			this.btnEdit.TabIndex = 39;
 			this.btnEdit.Text = "Edit";
 			this.btnEdit.UseVisualStyleBackColor = true;
@@ -216,10 +220,10 @@
 			// btnRemove
 			// 
 			this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRemove.Location = new System.Drawing.Point(806, 13);
+			this.btnRemove.Location = new System.Drawing.Point(806, 14);
 			this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
 			this.btnRemove.Name = "btnRemove";
-			this.btnRemove.Size = new System.Drawing.Size(60, 23);
+			this.btnRemove.Size = new System.Drawing.Size(60, 24);
 			this.btnRemove.TabIndex = 40;
 			this.btnRemove.Text = "Remove";
 			this.btnRemove.UseVisualStyleBackColor = true;
@@ -237,7 +241,7 @@
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(885, 18);
+			this.label1.Location = new System.Drawing.Point(894, 20);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(66, 13);
 			this.label1.TabIndex = 41;

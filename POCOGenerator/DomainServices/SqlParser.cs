@@ -16,15 +16,15 @@ namespace POCOGenerator.DomainServices
 
 		public SqlParser(string connectionString, string sql)
 		{
-			// Parse possible entity names
-			var entityNames = string.Empty;
+			// Parse possible entity names from custom procedure "AS" section
+			var procedureEntityNames = string.Empty;
 			var sqlUpper = sql.ToUpper().Trim();
 			if (sqlUpper.StartsWith("EXEC"))
 			{
 				var posAs = sqlUpper.IndexOf(" AS ");
 				if (posAs > 5)
 				{
-					entityNames = sql.Substring(posAs + 4);
+					procedureEntityNames = sql.Substring(posAs + 4);
 					sql = sql.Substring(0, posAs);
 				}
 			}
@@ -40,7 +40,7 @@ namespace POCOGenerator.DomainServices
 				sql = sql.Substring(0, posFrom + 6) + decoratedTable;
 			}
 
-			ParseTables(connectionString, sql, entityNames);
+			ParseTables(connectionString, sql, procedureEntityNames);
 			ParseColumns();
 			GenerateCode();
 		}
@@ -70,7 +70,7 @@ namespace POCOGenerator.DomainServices
 			}
 		}
 
-		private void ParseTables(string connectionString, string sql, string entityNames)
+		private void ParseTables(string connectionString, string sql, string procedureEntityNames)
 		{
 			using (var con = new SqlConnection(connectionString))
 			{
@@ -99,7 +99,7 @@ namespace POCOGenerator.DomainServices
 						for (var i = 0; i < content.Tables.Count; i++)
 						{
 							var table = content.Tables[i];
-							var resultItem = new ResultItem { SchemaTable = dr.GetSchemaTable(), DataTable = table, EntityName = GetEntityName(sql, entityNames, i, table.TableName) };
+							var resultItem = new ResultItem { SchemaTable = dr.GetSchemaTable(), DataTable = table, EntityName = GetEntityName(sql, i, table.TableName, procedureEntityNames) };
 							ResultItems.Add(resultItem);
 							dr.NextResult();
 						}
@@ -275,19 +275,19 @@ namespace POCOGenerator.DomainServices
 			return sql.ToUpper().Trim().StartsWith("SELECT") ? CommandType.Text : CommandType.StoredProcedure;
 		}
 
-		private static string GetEntityName(string sql, string entityNames, int index, string tableName)
+		private static string GetEntityName(string sql, int index, string tableName, string procedureEntityNames)
 		{
 			var commandType = GetCommandType(sql);
 			switch (commandType)
 			{
 				case CommandType.Text:
-					var sections = sql.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+					var sections = sql.Split("[] ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 					return sections[sections.Length - 1];
 
 				case CommandType.StoredProcedure:
-					if (!string.IsNullOrEmpty(entityNames))
+					if (!string.IsNullOrEmpty(procedureEntityNames))
 					{
-						var names = entityNames.Split(",. ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+						var names = procedureEntityNames.Split(",. ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 						if (index < names.Length)
 							return names[index];
 					}

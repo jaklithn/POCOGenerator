@@ -11,7 +11,7 @@ namespace POCOGenerator.Entities
 			get
 			{
 				var builder = new SqlConnectionStringBuilder(ConnectionString);
-				return string.Format("{0} - {1}", builder.DataSource, builder.InitialCatalog);
+				return string.Format("{0} [{1}]", builder.InitialCatalog.PadRight(25),builder.DataSource);
 			}
 		}
 
