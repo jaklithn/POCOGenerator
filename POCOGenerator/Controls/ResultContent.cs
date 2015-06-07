@@ -25,5 +25,13 @@ namespace POCOGenerator.Controls
 				txtCode.SelectAll();
 			}
 		}
+
+		private void grdData_DataError(object sender, DataGridViewDataErrorEventArgs e)
+		{
+			// There might be errors when a column has binary data.
+			// This often happens for MigrationTables.
+			// For this purpose we can safely suppress the errors.
+			e.Cancel=true;
+		}
 	}
 }

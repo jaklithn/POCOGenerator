@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using POCOGenerator.Controls;
 using POCOGenerator.DomainServices;
@@ -19,7 +21,7 @@ namespace POCOGenerator
 
 		private BindingList<ConnectionItem> ConnectionItems
 		{
-			get { return (BindingList<ConnectionItem>) connectionBindingSource.DataSource; }
+			get { return (BindingList<ConnectionItem>)connectionBindingSource.DataSource; }
 			set { connectionBindingSource.DataSource = value; }
 		}
 
@@ -27,7 +29,7 @@ namespace POCOGenerator
 		{
 			get
 			{
-				var connectionItem = (ConnectionItem) connectionBindingSource.Current;
+				var connectionItem = (ConnectionItem)connectionBindingSource.Current;
 				return connectionItem != null ? connectionItem.ConnectionString : null;
 			}
 			set
@@ -51,6 +53,9 @@ namespace POCOGenerator
 		public Main()
 		{
 			InitializeComponent();
+			var assembly = Assembly.GetExecutingAssembly();
+			lblVersion.Text = string.Format("Version: {0}, {1}", assembly.DisplayVersion(), assembly.Copyright());
+			lnkSource.Links.Add(new LinkLabel.Link() { LinkData = "https://github.com/jaklithn/POCOGenerator" });
 			tabResult.TabPages.Clear();
 		}
 
@@ -61,7 +66,7 @@ namespace POCOGenerator
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
-				var connection = new ConnectionItem {ConnectionString = f.ConnectionString};
+				var connection = new ConnectionItem { ConnectionString = f.ConnectionString };
 				ConnectionItems.Add(connection);
 				SelectedConnectionString = f.ConnectionString;
 				SaveSettings();
@@ -78,12 +83,14 @@ namespace POCOGenerator
 				return;
 			}
 
-			var f = new Connection {ConnectionString = connection.ConnectionString};
+			var f = new Connection { ConnectionString = connection.ConnectionString };
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
 				connection.ConnectionString = f.ConnectionString;
-				// How to refresh displayed data???
+				// Reload datasource seems to be the easiest way to refresh data ...
+				ConnectionItems = new BindingList<ConnectionItem>(ConnectionItems.OrderBy(c => c.DisplayName).ToList());
+				SelectedConnectionString = f.ConnectionString;
 				SaveSettings();
 				LoadTables();
 			}
@@ -104,14 +111,7 @@ namespace POCOGenerator
 
 		private void LoadTables()
 		{
-			if (SelectedConnectionString.IsSpecified())
-			{
-				cboTableName.DataSource = SqlParser.GetTableNames(SelectedConnectionString);
-			}
-			else
-			{
-				cboTableName.DataSource = null;
-			}
+			cboTableName.DataSource = SelectedConnectionString.IsSpecified() ? SqlParser.GetTableNames(SelectedConnectionString) : null;
 		}
 
 		private void Generate(string sql)
@@ -126,10 +126,10 @@ namespace POCOGenerator
 				tabResult.TabPages.Clear();
 				foreach (var resultItem in adoHandler.ResultItems)
 				{
-					var tabPage = new TabPage {Text = resultItem.EntityName, Margin = new Padding(0)};
+					var tabPage = new TabPage { Text = resultItem.EntityName, Margin = new Padding(0) };
 					tabResult.TabPages.Add(tabPage);
 
-					var content = new ResultContent {Dock = DockStyle.Fill};
+					var content = new ResultContent { Dock = DockStyle.Fill };
 					content.Initiate(resultItem);
 					tabPage.Controls.Add(content);
 				}
@@ -153,7 +153,7 @@ namespace POCOGenerator
 		private void GetSettings()
 		{
 			var settings = SettingsHandler.Get();
-			ConnectionItems = settings.ConnectionStrings;
+			ConnectionItems = new BindingList<ConnectionItem>(settings.ConnectionStrings.OrderBy(c => c.DisplayName).ToList());
 			if (ConnectionItems.Any(c => c.ConnectionString == settings.SelectedConnection))
 			{
 				SelectedConnectionString = settings.SelectedConnection;
@@ -173,7 +173,7 @@ namespace POCOGenerator
 		{
 			var settings = new Settings
 			{
-				ConnectionStrings = ConnectionItems,
+				ConnectionStrings = ConnectionItems.ToList(),
 				SelectedConnection = SelectedConnectionString,
 				SqlView = txtSqlView.Text,
 				SqlProcedure = txtSqlProcedure.Text
@@ -227,6 +227,11 @@ namespace POCOGenerator
 		{
 			SaveSettings();
 			Generate(txtSqlProcedure.Text);
+		}
+
+		private void lnkSource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Process.Start(e.Link.LinkData.ToString());
 		}
 
 		#endregion

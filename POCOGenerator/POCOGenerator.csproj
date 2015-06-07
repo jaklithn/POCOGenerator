@@ -66,6 +66,8 @@
     <Compile Include="Entities\ResultItem.cs" />
     <Compile Include="Entities\Settings.cs" />
     <Compile Include="Entities\SqlColumn.cs" />
+    <Compile Include="Extenders\AssemblyExtender.cs" />
+    <Compile Include="Extenders\ObjectExtender.cs" />
     <Compile Include="Extenders\StringExtender.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

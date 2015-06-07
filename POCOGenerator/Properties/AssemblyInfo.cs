@@ -5,9 +5,16 @@
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("POCOGenerator")]
-[assembly: AssemblyCopyright("Copyright Jakob Lithner © 2015")]
+[assembly: AssemblyCopyright("Jakob Lithner")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+
+// VERSION HISTORY
+//
+// Number	Description
+//==================================================
+// 1.0		First numbered version

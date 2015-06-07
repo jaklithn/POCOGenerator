@@ -48,6 +48,9 @@
 			this.sqlColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.resultItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label1 = new System.Windows.Forms.Label();
+			this.lblVersion = new System.Windows.Forms.Label();
+			this.lnkSource = new System.Windows.Forms.LinkLabel();
+			this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.tabResult.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.sqlColumnBindingSource)).BeginInit();
@@ -90,7 +93,7 @@
 			this.tabResult.Name = "tabResult";
 			this.tabResult.Padding = new System.Drawing.Point(20, 4);
 			this.tabResult.SelectedIndex = 0;
-			this.tabResult.Size = new System.Drawing.Size(1384, 641);
+			this.tabResult.Size = new System.Drawing.Size(1384, 624);
 			this.tabResult.TabIndex = 28;
 			// 
 			// tabPage1
@@ -98,7 +101,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 24);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(1376, 613);
+			this.tabPage1.Size = new System.Drawing.Size(1376, 596);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -108,7 +111,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 24);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(1376, 613);
+			this.tabPage2.Size = new System.Drawing.Size(1376, 596);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -154,13 +157,13 @@
 			// 
 			this.cboTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.cboTableName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboTableName.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cboTableName.ForeColor = System.Drawing.Color.Navy;
+			this.cboTableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.cboTableName.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cboTableName.FormattingEnabled = true;
 			this.cboTableName.Location = new System.Drawing.Point(966, 16);
 			this.cboTableName.MaxDropDownItems = 50;
 			this.cboTableName.Name = "cboTableName";
-			this.cboTableName.Size = new System.Drawing.Size(228, 20);
+			this.cboTableName.Size = new System.Drawing.Size(228, 21);
 			this.cboTableName.TabIndex = 34;
 			// 
 			// cboConnection
@@ -170,11 +173,11 @@
 			this.cboConnection.DataSource = this.connectionBindingSource;
 			this.cboConnection.DisplayMember = "DisplayName";
 			this.cboConnection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cboConnection.Font = new System.Drawing.Font("Lucida Console", 9F);
-			this.cboConnection.ForeColor = System.Drawing.Color.Navy;
+			this.cboConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+			this.cboConnection.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.cboConnection.Location = new System.Drawing.Point(114, 16);
 			this.cboConnection.Name = "cboConnection";
-			this.cboConnection.Size = new System.Drawing.Size(550, 20);
+			this.cboConnection.Size = new System.Drawing.Size(550, 21);
 			this.cboConnection.TabIndex = 36;
 			this.cboConnection.ValueMember = "ConnectionString";
 			// 
@@ -248,12 +251,38 @@
 			this.label1.Text = "Table name:";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// lblVersion
+			// 
+			this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblVersion.ForeColor = System.Drawing.Color.Navy;
+			this.lblVersion.Location = new System.Drawing.Point(11, 756);
+			this.lblVersion.Name = "lblVersion";
+			this.lblVersion.Size = new System.Drawing.Size(307, 21);
+			this.lblVersion.TabIndex = 42;
+			this.lblVersion.Text = "Version 1.0, Jakob Lithner";
+			this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// lnkSource
+			// 
+			this.lnkSource.AutoSize = true;
+			this.lnkSource.Location = new System.Drawing.Point(1248, 760);
+			this.lnkSource.Name = "lnkSource";
+			this.lnkSource.Size = new System.Drawing.Size(147, 13);
+			this.lnkSource.TabIndex = 43;
+			this.lnkSource.TabStop = true;
+			this.lnkSource.Text = "OpenSource stored at GitHub";
+			this.lnkSource.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.MyToolTip.SetToolTip(this.lnkSource, "Find source in GitHub repository");
+			this.lnkSource.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSource_LinkClicked);
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.AliceBlue;
 			this.ClientSize = new System.Drawing.Size(1406, 780);
+			this.Controls.Add(this.lnkSource);
+			this.Controls.Add(this.lblVersion);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnRemove);
 			this.Controls.Add(this.btnEdit);
@@ -269,7 +298,7 @@
 			this.Controls.Add(this.txtSqlView);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Main";
-			this.Text = "Generate POCO class from SQL Server";
+			this.Text = "Generate C# POCO class from SQL Server";
 			this.Load += new System.EventHandler(this.Main_Load);
 			this.tabResult.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).EndInit();
@@ -300,6 +329,9 @@
 		internal System.Windows.Forms.Button btnRemove;
 		private System.Windows.Forms.BindingSource connectionBindingSource;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lblVersion;
+		private System.Windows.Forms.LinkLabel lnkSource;
+		private System.Windows.Forms.ToolTip MyToolTip;
 	}
 }
 
