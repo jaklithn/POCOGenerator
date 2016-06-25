@@ -14,11 +14,17 @@ namespace POCOGenerator.Extenders
 			return new string(a);
 		}
 
+		/// <summary>
+		/// Simple extension just to make code cleaner to read.
+		/// </summary>
 		public static bool IsNullOrEmpty(this string value)
 		{
 			return string.IsNullOrEmpty(value);
 		}
 
+		/// <summary>
+		/// Simple extension just to make code cleaner to read.
+		/// </summary>
 		public static bool IsSpecified(this string value)
 		{
 			return !string.IsNullOrEmpty(value);

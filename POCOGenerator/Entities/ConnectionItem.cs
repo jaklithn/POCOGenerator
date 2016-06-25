@@ -6,6 +6,7 @@ namespace POCOGenerator.Entities
 	public class ConnectionItem
 	{
 		public string ConnectionString { get; set; }
+
 		public string DisplayName
 		{
 			get
@@ -15,5 +16,9 @@ namespace POCOGenerator.Entities
 			}
 		}
 
+		public ConnectionItem(string connectionString)
+		{
+			ConnectionString = connectionString;
+		}
 	}
 }

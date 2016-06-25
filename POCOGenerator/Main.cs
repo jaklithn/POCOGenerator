@@ -66,8 +66,7 @@ namespace POCOGenerator
 			var dialogResult = f.ShowDialog();
 			if (dialogResult == DialogResult.OK)
 			{
-				var connection = new ConnectionItem { ConnectionString = f.ConnectionString };
-				ConnectionItems.Add(connection);
+				ConnectionItems.Add(new ConnectionItem(f.ConnectionString));
 				SelectedConnectionString = f.ConnectionString;
 				SaveSettings();
 				LoadTables();
@@ -153,7 +152,7 @@ namespace POCOGenerator
 		private void GetSettings()
 		{
 			var settings = SettingsHandler.Get();
-			ConnectionItems = new BindingList<ConnectionItem>(settings.ConnectionStrings.OrderBy(c => c.DisplayName).ToList());
+			ConnectionItems = new BindingList<ConnectionItem>(settings.ConnectionStrings.Select(x => new ConnectionItem(x)).OrderBy(c => c.DisplayName).ToList());
 			if (ConnectionItems.Any(c => c.ConnectionString == settings.SelectedConnection))
 			{
 				SelectedConnectionString = settings.SelectedConnection;
@@ -173,7 +172,7 @@ namespace POCOGenerator
 		{
 			var settings = new Settings
 			{
-				ConnectionStrings = ConnectionItems.ToList(),
+				ConnectionStrings = ConnectionItems.Select(x => x.ConnectionString).ToList(),
 				SelectedConnection = SelectedConnectionString,
 				SqlView = txtSqlView.Text,
 				SqlProcedure = txtSqlProcedure.Text

@@ -16,7 +16,7 @@ namespace POCOGenerator.DomainServices
 
 		public SqlParser(string connectionString, string sql)
 		{
-			// Parse possible entity names from custom procedure "AS" section
+			// Parse possible entity names specified in the custom "AS" section
 			var procedureEntityNames = string.Empty;
 			var sqlUpper = sql.ToUpper().Trim();
 			if (sqlUpper.StartsWith("EXEC"))
@@ -166,7 +166,7 @@ namespace POCOGenerator.DomainServices
 
 				foreach (var sqlColumn in resultItem.SqlColumns)
 				{
-					sb.AppendLine(string.Format("    public {0} {1} {{ get; set; }}", GetNullableDataType(sqlColumn), sqlColumn.ColumnName));
+					sb.AppendLine($"    public {GetNullableDataType(sqlColumn)} {sqlColumn.ColumnName} {{ get; set; }}");
 				}
 
 				sb.AppendLine("}");

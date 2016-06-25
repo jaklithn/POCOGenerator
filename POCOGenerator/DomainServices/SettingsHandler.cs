@@ -8,7 +8,7 @@ namespace POCOGenerator.DomainServices
 {
 	public static class SettingsHandler
 	{
-		private static readonly string FileName = string.Format("{0}.Settings.xml", Assembly.GetExecutingAssembly().GetName().Name);
+		private static readonly string FileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.Settings.xml";
 		private static readonly XmlSerializer Serializer = new XmlSerializer(typeof (Settings));
 
 		public static Settings Get()

@@ -15,7 +15,7 @@ namespace POCOGenerator.Extenders
 		public static string DisplayVersion(this Assembly assembly)
 		{
 			var version = assembly.Version();
-			return string.Format("{0}.{1} ({2})", version.Major, version.Minor, assembly.BuildDate().ToLocalTime().ToString("yyyy-MM-dd"));
+			return $"{version.Major}.{version.Minor} ({assembly.BuildDate().ToLocalTime().ToString("yyyy-MM-dd")})";
 		}
 
 		public static DateTime BuildDate(this Assembly assembly)
