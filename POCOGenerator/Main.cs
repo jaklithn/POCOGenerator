@@ -30,7 +30,7 @@ namespace POCOGenerator
 			get
 			{
 				var connectionItem = (ConnectionItem)connectionBindingSource.Current;
-				return connectionItem != null ? connectionItem.ConnectionString : null;
+				return connectionItem?.ConnectionString;
 			}
 			set
 			{
@@ -54,7 +54,7 @@ namespace POCOGenerator
 		{
 			InitializeComponent();
 			var assembly = Assembly.GetExecutingAssembly();
-			lblVersion.Text = string.Format("Version: {0}, {1}", assembly.DisplayVersion(), assembly.Copyright());
+			lblVersion.Text = $"Version: {assembly.DisplayVersion()}, {assembly.Copyright()}";
 			lnkSource.Links.Add(new LinkLabel.Link() { LinkData = "https://github.com/jaklithn/POCOGenerator" });
 			tabResult.TabPages.Clear();
 		}
