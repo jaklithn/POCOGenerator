@@ -253,7 +253,7 @@
 			// 
 			// lblVersion
 			// 
-			this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lblVersion.ForeColor = System.Drawing.Color.Navy;
 			this.lblVersion.Location = new System.Drawing.Point(11, 756);
 			this.lblVersion.Name = "lblVersion";
@@ -264,6 +264,7 @@
 			// 
 			// lnkSource
 			// 
+			this.lnkSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lnkSource.AutoSize = true;
 			this.lnkSource.Location = new System.Drawing.Point(1248, 760);
 			this.lnkSource.Name = "lnkSource";
