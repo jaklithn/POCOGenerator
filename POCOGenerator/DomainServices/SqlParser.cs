@@ -179,7 +179,7 @@ namespace POCOGenerator.DomainServices
 		private static string GetNullableDataType(SqlColumn sqlColumn)
 		{
 			var dataType = GetDataType(sqlColumn);
-			var addNullability = sqlColumn.AllowDBNull && dataType != "string";
+			var addNullability = sqlColumn.AllowDBNull && dataType != "string" && dataType != "byte[]";
 			return addNullability ? dataType + "?" : dataType;
 		}
 
