@@ -261,7 +261,7 @@ namespace POCOGenerator.DomainServices
 
 				case CommandType.StoredProcedure:
 					var sections = sql.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-					if (sections.Count() > 2 && sections[0].ToUpper() == "EXEC")
+					if (sections.Count() >= 2 && sections[0].ToUpper() == "EXEC")
 						return sections[1];
 					throw new Exception("Could not parse Name of StoredProcedure");
 
