@@ -178,8 +178,9 @@ namespace POCOGenerator.DomainServices
 
 		private static string GetNullableDataType(SqlColumn sqlColumn)
 		{
+            var nullable = new []{"string","object","Guid","DataTable"};
 			var dataType = GetDataType(sqlColumn);
-			var addNullability = sqlColumn.AllowDBNull && dataType != "string";
+			var addNullability = sqlColumn.AllowDBNull && !nullable.Contains(dataType);
 			return addNullability ? dataType + "?" : dataType;
 		}
 
