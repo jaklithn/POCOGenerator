@@ -117,4 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblExplain.Text" xml:space="preserve">
+    <value>Please specify your own connection string above.
+Normally you will use either Trusted_Connection or User ID and Password.
+
+Example:
+Server=xxx; Database=yyy; Trusted_Connection=True;
+Server=xxx; Database=yyy; User ID=uuu; Password=zzz;
+
+</value>
+  </data>
 </root>

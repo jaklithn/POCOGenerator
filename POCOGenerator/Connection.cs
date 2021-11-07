@@ -14,8 +14,6 @@ namespace POCOGenerator
 		}
 
 
-		#region  Properties
-
 		public string ConnectionString
 		{
 			get { return txtConnectionString.Text; }
@@ -31,8 +29,6 @@ namespace POCOGenerator
 			}
 		}
 
-		#endregion
-
 
 		#region Event Handlers
 
@@ -40,7 +36,7 @@ namespace POCOGenerator
 		{
 			if (txtConnectionString.Text.IsNullOrEmpty())
 			{
-				txtConnectionString.Text = "Server=localhost; Database=; Trusted_Connection=True; User ID=; Password=;";
+				txtConnectionString.Text = @"Server=localhost; Database=; Trusted_Connection=True; User ID=; Password=;";
 			}
 		}
 
